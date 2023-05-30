@@ -1,0 +1,49 @@
+
+<html>
+<head>
+  <title>HTML Form Tags</title>
+</head>
+<body bgcolor="green">
+  <form action="/action_page.php">
+    <h1>Please Enter your Details and Submit</h1>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname">
+    <br>
+    <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname">
+    <br>
+    <hr>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <br>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label>
+    <br>
+    <br>
+    <hr>
+    <p>Check all facilities you want</p>
+    <input type="checkbox" id="hostel" name="hostel" value="hostel">
+    <label for="hostel">I want hostel</label>
+    <br>
+    <input type="checkbox" id="transport" name="transport" value="transport">
+    <label for="transport">I want transport</label>
+    <br>
+    <br>
+    <hr>
+    <label for="cname">Select your course</label>
+    <br>
+    <select name="cname" id="cname">
+      <option value="AIML">AIML</option>
+      <option value="DS">Data Science</option>
+      <option value="CS">Cyber Security</option>
+    </select>
+    <br>
+    <hr>
+    <label for="Address">Enter your address:</label>
+    <textarea id="Address" name="Address" rows="4" cols="50"></textarea>
+    <br>
+    <hr>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
