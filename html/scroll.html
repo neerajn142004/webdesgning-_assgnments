@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moving Object</title>
+  <style>
+    .object {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      animation: moveSquare 4s linear infinite;
+    }
+    
+    @keyframes moveSquare {
+      0% {
+        transform: translateX(0) translateY(0);
+      }
+      
+      25% {
+        transform: translateX(200px) translateY(0);
+      }
+      
+      50% {
+        transform: translateX(200px) translateY(200px);
+      }
+      
+      75% {
+        transform: translateX(0) translateY(200px);
+      }
+      
+      100% {
+        transform: translateX(0) translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="object"></div>
+</body>
+</html>
