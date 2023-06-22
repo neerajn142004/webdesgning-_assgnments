@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moving Text Fullscreen</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+    
+    .moving-text {
+      position: absolute;
+      font-size: 5vw;
+      font-weight: bold;
+      color: #333;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+    
+    .move-down {
+      top: -20vh;
+      animation-name: moveDown;
+    }
+    
+    .move-right {
+      left: -20vw;
+      animation-name: moveRight;
+    }
+    
+    @keyframes moveDown {
+      0% {
+        top: -20vh;
+      }
+      
+      100% {
+        top: 100vh;
+      }
+    }
+    
+    @keyframes moveRight {
+      0% {
+        left: -20vw;
+      }
+      
+      100% {
+        left: 100vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="moving-text move-down">Text Moving Down</div>
+    <div class="moving-text move-right">Text Moving Right</div>
+  </div>
+</body>
+</html>
+
