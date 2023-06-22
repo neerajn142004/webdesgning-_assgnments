@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timer Example</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f1f1f1;
+    }
+    
+    .timer-container {
+      border: 2px solid blue;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .timer {
+      font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+  <div class="timer-container">
+    <h1>Time</h1>
+    <div class="timer" id="timer"></div>
+  </div>
+  
+  <script>
+    // Set the target date and time (e.g., one hour from now)
+    var targetDate = new Date();
+    targetDate.setHours(targetDate.getHours() + 1);
+    
+    // Update the timer every second
+    var timerInterval = setInterval(updateTimer, 1000);
+    
+    // Function to update the timer display
+    function updateTimer() {
+      var now = new Date();
+      var timeRemaining = targetDate - now;
+      
+      // Check if the timer has reached zero
+      if (timeRemaining <= 0) {
+        clearInterval(timerInterval);
+        document.getElementById('timer').innerHTML = "Time's up!";
+        return;
+      }
+      
+      // Calculate hours, minutes, and seconds
+      var hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+      var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+      
+      // Display the timer in the HTML element
+      var timerElement = document.getElementById('timer');
+      timerElement.innerHTML = hours + "h " + minutes + "m " + seconds + "s";
+    }
+  </script>
+</body>
+</html>

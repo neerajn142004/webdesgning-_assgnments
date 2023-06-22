@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f1f1f1;
+    }
+    
+    .calculator-container {
+      border: 2px solid blue;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .calculator-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .calculator-buttons button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    
+    .calculator-output {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator-container">
+    <h1>Calculator</h1>
+    
+    <div class="calculator-buttons">
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button onclick="performOperation('+')">+</button>
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button onclick="performOperation('-')">-</button>
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button onclick="performOperation('*')">*</button>
+      <button onclick="appendNumber(0)">0</button>
+      <button onclick="performOperation('.')">.</button>
+      <button onclick="clearCalculator()">Clear</button>
+      <button onclick="performBackspace()">&larr;</button>
+      <button onclick="performOperation('/')">/</button>
+      <button onclick="calculateResult()">=</button>
+    </div>
+    
+    <div class="calculator-output" id="output">0</div>
+    
+    <div>
+      <button onclick="toggleCalculator()">On/Off</button>
+    </div>
+  </div>
+  
+  <script>
+    var calculatorOn = true;
+    var outputElement = document.getElementById('output');
+    var expression = '';
+    
+    function appendNumber(number) {
+      if (!calculatorOn) return;
+      
+      expression += number;
+      outputElement.innerText = expression;
+    }
+    
+    function performOperation(operator) {
+      if (!calculatorOn) return;
+      
+      if (operator === '.') {
+        if (expression.indexOf('.') !== -1) {
+          // Decimal already exists
+          return;
+        }
+        
+        expression += operator;
+      } else {
+        expression += ' ' + operator + ' ';
+      }
+      
+      outputElement.innerText = expression;
+    }
+    
+    function clearCalculator() {
+      if (!calculatorOn) return;
+      
+      expression = '';
+      outputElement.innerText = '0';
+    }
+    
+    function performBackspace() {
+      if (!calculatorOn) return;
+      
+      expression = expression.slice(0, -1);
+      outputElement.innerText = expression;
+    }
+    
+    function calculateResult() {
+      if (!calculatorOn) return;
+      
+      try {
+        var result = eval(expression);
+        expression = result.toString();
+        outputElement.innerText = expression;
+      } catch (error) {
+        outputElement.innerText = 'Error';
+      }
+    }
+    
+    function toggleCalculator() {
+      calculatorOn = !calculatorOn;
+      outputElement.innerText = calculatorOn ? expression || '0' : 'Off';
+    }
+  </script>
+</body>
+</html>
+

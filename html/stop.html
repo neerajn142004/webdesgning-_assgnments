@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stopwatch</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f1f1f1;
+    }
+    
+    .stopwatch-container {
+      border: 2px solid red;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .stopwatch {
+      font-size: 48px;
+      font-weight: bold;
+    }
+    
+    .buttons {
+      margin-top: 20px;
+    }
+    
+    .buttons button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="stopwatch-container">
+    <h1>Stopwatch</h1>
+    <div class="stopwatch" id="stopwatch">00:00:00</div>
+    <div class="buttons">
+      <button onclick="startStopwatch()">Start</button>
+      <button onclick="stopStopwatch()">Stop</button>
+      <button onclick="resetStopwatch()">Reset</button>
+    </div>
+  </div>
+  
+  <script>
+    var stopwatchElement = document.getElementById('stopwatch');
+    var stopwatchInterval;
+    var startTime;
+    var elapsedTime = 0;
+    
+    function startStopwatch() {
+      if (!stopwatchInterval) {
+        startTime = Date.now() - elapsedTime;
+        stopwatchInterval = setInterval(updateStopwatch, 10);
+      }
+    }
+    
+    function stopStopwatch() {
+      if (stopwatchInterval) {
+        clearInterval(stopwatchInterval);
+        stopwatchInterval = null;
+      }
+    }
+    
+    function resetStopwatch() {
+      stopStopwatch();
+      elapsedTime = 0;
+      updateStopwatch();
+    }
+    
+    function updateStopwatch() {
+      var currentTime = Date.now();
+      elapsedTime = currentTime - startTime;
+      
+      var hours = Math.floor(elapsedTime / 3600000);
+      var minutes = Math.floor((elapsedTime % 3600000) / 60000);
+      var seconds = Math.floor((elapsedTime % 60000) / 1000);
+      var milliseconds = Math.floor((elapsedTime % 1000) / 10);
+      
+      var timeString = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds) + ":" + formatTime(milliseconds);
+      stopwatchElement.innerHTML = timeString;
+    }
+    
+    function formatTime(time) {
+      return time.toString().padStart(2, '0');
+    }
+  </script>
+</body>
+</html>
