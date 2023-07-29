@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Change on Touch</title>
+  <style>
+    /* Styling for the box */
+    #colorBox {
+      width: 100px;
+      height: 100px;
+      background-color: red; /* Initial color is red */
+      cursor: pointer; /* Set cursor to pointer on hover */
+    }
+
+    /* Styling for the blue color */
+    .blue {
+      background-color: blue !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- The box that changes color -->
+  <div id="colorBox" onclick="changeColor()"></div>
+
+  <script>
+    function changeColor() {
+      const box = document.getElementById("colorBox");
+      box.classList.toggle("blue");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Output Display</title>
+</head>
+<body>
+  <label for="inputBox">Enter text:</label>
+  <input type="text" id="inputBox" oninput="showOutput()" />
+  <p id="output"></p>
+
+  <script>
+    function showOutput() {
+      const inputBox = document.getElementById("inputBox");
+      const output = document.getElementById("output");
+      output.innerText = inputBox.value;
+    }
+  </script>
+</body>
+</html>
