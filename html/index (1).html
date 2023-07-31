@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scrolling Image</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Hide the default scrollbars */
+    }
+
+    #image {
+      position: absolute; /* Position the image absolutely */
+      width: 100%; /* Set the image width to be the same as the viewport */
+      height: auto; /* Allow the image height to adjust accordingly */
+      left: 0; /* Position the image at the left side */
+      top: 0; /* Position the image at the top */
+      transform: translateY(0); /* Initialize the image position */
+      transition: transform 0.5s ease-in-out; /* Apply a smooth transition effect */
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="Back.png.png" alt="Scrolling Image">
+  <script src="script.js"></script>
+</body>
+</html>
