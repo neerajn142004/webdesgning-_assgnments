@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open Link</title>
+</head>
+<body>
+  <form id="linkForm">
+    <label for="link">Enter a URL:</label>
+    <input type="text" id="link" name="link" placeholder="https://" required>
+    <button type="submit">Open Link</button>
+  </form>
+
+  <script>
+    document.getElementById("linkForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Get the URL from the input field
+      var linkInput = document.getElementById("link");
+      var url = linkInput.value;
+
+      // Open the URL in a new tab/window
+      window.open(url, "_blank");
+
+      // Clear the input field
+      linkInput.value = "https://bharathvk75.wixsite.com/vvbnk69";
+    });
+  </script>
+</body>
+</html>
+
